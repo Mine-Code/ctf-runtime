@@ -6,4 +6,5 @@ Dockerfile.marker: Dockerfile ctflib/libctf.a $(call rwildcard,ctflib/include,*)
 	touch Dockerfile.marker
 
 ctflib/libctf.a: $(call rwildcard,ctflib/include,*) $(call rwildcard,ctflib/src,*)
-	@make -C ctflib
+#	make -C ctflib
+	@docker run -it --rm -e CHALLENGE=no -v $(CURDIR)/ctflib:/mnt minecode-ctf-runner "apt update; apt install make; make"
