@@ -15,10 +15,7 @@ if [ "$CHALLENGE" = "yes" ]; then
     [ -f $DOT_ENV ] && {
         chmod 400 $DOT_ENV
         chown root:root $DOT_ENV
-        cat $DOT_ENV
         . $DOT_ENV
-    } || {
-        echo "No .env file found"
     }
 
 
@@ -26,7 +23,6 @@ if [ "$CHALLENGE" = "yes" ]; then
         su -c "$*" ctf
     }
 else
-    echo "Not in challenge mode"
     function execute() {
         sh -c "$*"
     }
