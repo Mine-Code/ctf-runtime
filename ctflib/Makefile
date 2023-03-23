@@ -3,6 +3,13 @@ SOURCE_FILES := $(wildcard src/*.c src/*.cpp)
 CFLAGS := -c -I include
 CXXFLAGS := $(CFLAGS)
 
+.PHONY: all
+all: libctf.a
+
+.PHONY: clean
+clean:
+	@rm -rd build/*.o libctf.a || true
+
 build/%.o: src/%.c
 	@printf "> \x1b[32mBuilding $@ with Stack=NonExec|Protected \x1b[0m\n"
 	gcc $(CFLAGS) -o $@ $^
