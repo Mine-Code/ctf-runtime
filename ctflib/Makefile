@@ -10,6 +10,9 @@ all: libctf.a
 clean:
 	@rm -rd build/*.o libctf.a || true
 
+build:
+	@mkdir -p build
+
 build/%.o: src/%.c
 	@printf "> \x1b[32mBuilding $@ with Stack=NonExec|Protected \x1b[0m\n"
 	gcc $(CFLAGS) -o $@ $^
