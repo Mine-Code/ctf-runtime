@@ -13,13 +13,13 @@ clean:
 build:
 	@mkdir -p build
 
-build/%.o: src/%.c
+build/%.o: build src/%.c
 	@printf "> \x1b[32mBuilding $@ with Stack=NonExec|Protected \x1b[0m\n"
-	gcc $(CFLAGS) -o $@ $^
+	gcc $(CFLAGS) -o $@ $(filter-out build, $^)
 
-build/%.o: src/%.cpp
+build/%.o: build src/%.cpp
 	@printf "> \x1b[32mBuilding $@ with Stack=NonExec|Protected \x1b[0m\n"
-	g++ $(CXXFLAGS) -o $@ $^
+	g++ $(CXXFLAGS) -o $@ $(filter-out build, $^)
 
 libctf.a: $(patsubst src/%,build/%.o,$(basename $(SOURCE_FILES)))
 	@printf "> \x1b[32mCreating $@ file with $^ \x1b[0m\n"
