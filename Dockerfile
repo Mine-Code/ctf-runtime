@@ -17,6 +17,8 @@ COPY ctflib/include /usr/local/include/
 COPY runtime.sh /bin/runtime.sh
 RUN chmod +x /bin/runtime.sh
 
+COPY ctflib-py /usr/lib/python3.6/ctf
+
 # docker run -it -v $PWD/work:/mnt --rm minecode-ctf-runner:latest sh -c
 ENV CHALLENGE yes
 ENTRYPOINT [ "/bin/runtime.sh" ]
