@@ -6,7 +6,7 @@ Dockerfile.marker: Dockerfile ctflib/libctf.a $(call rwildcard,ctflib/include,*)
 	@[ ! -e Dockerfile.marker ] && { \
 		touch Dockerfile.marker; \
 		$(MAKE) -C ctflib clean all; \
-	}
+	} || true
 
 ctflib/libctf.a: $(call rwildcard,ctflib/include,*) $(call rwildcard,ctflib/src,*)
 	@[ -e Dockerfile.marker ] \
