@@ -1,6 +1,6 @@
 def detect_flag():
     try:
-        with open('flag.txt') as f:
+        with open('flag.txt', 'r') as f:
             return f.read().strip()
     except IOError:
         pass
